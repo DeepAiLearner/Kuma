@@ -6,7 +6,7 @@ export default ({ app, store, route, redirect }) => {
   const token = Cookies.get('JWT-TOKEN')
   const isLoginPage = route.path === '/login'
   // 用户未登录
-  if (!user) {
+  if (!user.id) {
     // 没有 token，且不在登录页面，跳到登录页
     if (!token && !isLoginPage) {
       return redirect('/login')
@@ -37,7 +37,7 @@ export default ({ app, store, route, redirect }) => {
       })
   } else {
     // 已登录用户不能访问登录页面
-    if (user && isLoginPage) {
+    if (isLoginPage) {
       return redirect('/')
     }
     // 如果当前用户已经不是管理员了，登出，跳转到登录页面
