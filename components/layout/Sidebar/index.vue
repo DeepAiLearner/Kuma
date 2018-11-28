@@ -27,7 +27,20 @@ export default {
   computed: {
     ...mapGetters(['sidebar']),
     routes() {
-      return this.$router.options.routes
+      const { routes } = this.$router.options
+      const result = []
+      // 有什么更好的排序方法吗？
+      routes.forEach(item => {
+        if (item.path === '/dashboard') {
+          result.push(item)
+        }
+      })
+      routes.forEach(item => {
+        if (item.path !== '/dashboard') {
+          result.push(item)
+        }
+      })
+      return result
     },
     isCollapse() {
       return !this.sidebar.opened

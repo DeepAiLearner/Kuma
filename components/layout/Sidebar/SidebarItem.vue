@@ -22,7 +22,7 @@
       <template slot="title">
         <item 
           v-if="item.meta" 
-          :icon="(item.meta.icon)"
+          :icon="mapIcon(item.meta.icon)"
           :title="mapTitle(item.meta.title)" />
       </template>
 
@@ -43,7 +43,7 @@
           <el-menu-item :index="resolvePath(child.path)">
             <item 
               v-if="child.meta" 
-              :icon="(child.meta.icon)"
+              :icon="mapIcon(child.meta.icon)"
               :title="mapTitle(child.meta.title)" />
           </el-menu-item>
         </app-link>

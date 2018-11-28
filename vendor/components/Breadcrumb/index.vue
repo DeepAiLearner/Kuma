@@ -12,7 +12,7 @@
           class="no-redirect">{{ mapTitle(item.meta.title) }}</span>
         <a 
           v-else 
-          @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+          @click.prevent="handleLink(item)">{{ mapTitle(item.meta.title) }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -46,7 +46,7 @@ export default {
       })
       const first = matched[0]
       if (first && first.name !== 'dashboard') {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' } }].concat(
+        matched = [{ path: '/dashboard', meta: { title: 'dashboard' } }].concat(
           matched
         )
       }
@@ -63,6 +63,9 @@ export default {
       if (redirect) {
         this.$router.push(redirect)
         return
+      }
+      if (path === '/dashboard') {
+        return this.$router.push('/dashboard')
       }
       this.$router.push(this.pathCompile(path))
     }
