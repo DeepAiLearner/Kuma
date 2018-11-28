@@ -1,6 +1,6 @@
 # Kuma
 
-> My flawless Nuxt.js project
+> [Nuxt.js SPA mode v.2.3.4](https://github.com/nuxt/nuxt.js/releases/tag/v2.3.4) + [vue-element-admin v3.9.3](https://github.com/PanJiaChen/vue-element-admin/releases/tag/v3.9.3)
 
 ## Build Setup
 

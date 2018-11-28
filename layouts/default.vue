@@ -11,6 +11,7 @@
       <sidebar class="sidebar-container"/>
       <div class="main-container">
         <navbar/>
+        <todo-nav/>
         <app-main/>
       </div>
     </div>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from '~/components/layout'
+import { Navbar, Sidebar, AppMain, TodoNav } from '~/components/layout'
 import ResizeMixin from '~/mixins/ResizeHandler'
 
 export default {
@@ -26,7 +27,8 @@ export default {
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    TodoNav
   },
   mixins: [ResizeMixin],
   computed: {
