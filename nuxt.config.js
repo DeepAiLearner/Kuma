@@ -47,6 +47,11 @@ module.exports = {
           }
         }
       }
+      routes.push({
+        name: 'error-404',
+        path: '*',
+        component: resolve('pages/error/404.vue')
+      })
     }
   },
 
