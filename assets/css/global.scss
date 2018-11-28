@@ -1,0 +1,8 @@
+input {
+  vertical-align: middle;
+
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 100px transparent inset !important;
+    background-color: transparent !important;
+  }
+}

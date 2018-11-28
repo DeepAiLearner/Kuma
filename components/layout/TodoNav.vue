@@ -16,7 +16,6 @@
     line-height: 24px;
     border: 1px solid;
     color: #fff;
-    background: #fff;
     padding: 0 8px;
     font-size: 12px;
     margin-left: 5px;
@@ -24,8 +23,8 @@
   }
 
   .level-0 {
-    color: #495060;
-    border-color: #d8dce5;
+    border-color: #909399;
+    background-color: #909399;
   }
 
   .level-1 {
