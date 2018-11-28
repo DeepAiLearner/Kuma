@@ -47,6 +47,11 @@ module.exports = {
           }
         }
       }
+      routes.push({
+        name: 'error-404',
+        path: '*',
+        component: resolve('pages/error/404.vue')
+      })
     }
   },
 
@@ -59,8 +64,9 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/css/global.scss',
     '~/vendor/styles/index.scss',
+    'element-ui/lib/theme-chalk/index.css',
     'normalize.css'
   ],
 

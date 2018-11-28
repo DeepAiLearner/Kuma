@@ -36,7 +36,12 @@ export default {
         }
       })
       routes.forEach(item => {
-        if (item.path !== '/dashboard') {
+        if (item.path !== '/dashboard' && item.path !== '/manager') {
+          result.push(item)
+        }
+      })
+      routes.forEach(item => {
+        if (item.path === '/manager') {
           result.push(item)
         }
       })
