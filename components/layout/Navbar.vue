@@ -19,17 +19,10 @@
       <el-dropdown-menu 
         slot="dropdown" 
         class="user-dropdown">
-        <router-link 
-          class="inlineBlock" 
-          to="/">
-          <el-dropdown-item>
-            Home
-          </el-dropdown-item>
-        </router-link>
-        <el-dropdown-item divided>
+        <el-dropdown-item>
           <span 
             style="display:block;" 
-            @click="logout">LogOut</span>
+            @click="logout">退出</span>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -55,6 +48,7 @@ export default {
     },
     logout() {
       this.$store.commit('USER_LOGOUT')
+      this.$cookie.remove('JWT-TOKEN')
       window.location = '/login'
     }
   }

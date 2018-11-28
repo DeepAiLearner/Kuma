@@ -11,6 +11,9 @@ export default ({ app, store, route, redirect }) => {
     if (!token && !isLoginPage) {
       return redirect('/login')
     }
+    if (!token) {
+      return
+    }
     app.$axios.setToken(token, 'Bearer')
     app.$axios
       .$post('door/refresh')
@@ -20,7 +23,7 @@ export default ({ app, store, route, redirect }) => {
           // 是管理员
           store.commit('SET_USER', data)
           if (isLoginPage) {
-            window.location = '/'
+            window.location = '/dashboard'
           }
         } else {
           // 不是管理员
@@ -42,7 +45,7 @@ export default ({ app, store, route, redirect }) => {
   } else {
     // 已登录用户不能访问登录页面
     if (isLoginPage) {
-      return redirect('/')
+      return redirect('/dashboard')
     }
     // 如果当前用户已经不是管理员了，登出，跳转到登录页面
     if (!user.is_admin) {

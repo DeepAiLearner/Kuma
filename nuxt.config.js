@@ -30,7 +30,25 @@ module.exports = {
    * Global middleware
    */
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
+    extendRoutes(routes) {
+      for (const route of routes) {
+        route.props = /:/.test(route.path)
+        route.meta = {
+          title: route.path.replace('/', ''),
+          icon: route.path.replace('/', '')
+        }
+        if (route.children) {
+          for (const item of route.children) {
+            item.meta = {
+              title: item.name,
+              icon: item.name
+            }
+          }
+        }
+      }
+      console.log(routes)
+    }
   },
 
   /*

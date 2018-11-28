@@ -9,7 +9,7 @@
         :key="item.path">
         <span 
           v-if="item.redirect==='noredirect'||index==levelList.length-1" 
-          class="no-redirect">{{ item.meta.title }}</span>
+          class="no-redirect">{{ mapTitle(item.meta.title) }}</span>
         <a 
           v-else 
           @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
@@ -20,8 +20,10 @@
 
 <script>
 import pathToRegexp from 'path-to-regexp'
+import sidebarMixin from '~/mixins/sidebar'
 
 export default {
+  mixins: [sidebarMixin],
   data() {
     return {
       levelList: null

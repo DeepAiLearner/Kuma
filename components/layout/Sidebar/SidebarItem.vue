@@ -10,8 +10,8 @@
           :class="{'submenu-title-noDropdown':!isNest}">
           <item 
             v-if="onlyOneChild.meta" 
-            :icon="onlyOneChild.meta.icon||item.meta.icon" 
-            :title="onlyOneChild.meta.title" />
+            :icon="mapIcon(onlyOneChild.meta.icon||item.meta.icon)"
+            :title="mapTitle(onlyOneChild.meta.title)" />
         </el-menu-item>
       </app-link>
     </template>
@@ -22,8 +22,8 @@
       <template slot="title">
         <item 
           v-if="item.meta" 
-          :icon="item.meta.icon" 
-          :title="item.meta.title" />
+          :icon="(item.meta.icon)"
+          :title="mapTitle(item.meta.title)" />
       </template>
 
       <template 
@@ -43,8 +43,8 @@
           <el-menu-item :index="resolvePath(child.path)">
             <item 
               v-if="child.meta" 
-              :icon="child.meta.icon" 
-              :title="child.meta.title" />
+              :icon="(child.meta.icon)"
+              :title="mapTitle(child.meta.title)" />
           </el-menu-item>
         </app-link>
       </template>
@@ -58,10 +58,12 @@ import path from 'path'
 import { isExternal } from '~/vendor/utils'
 import Item from './Item'
 import AppLink from './Link'
+import sidebarMixin from '~/mixins/sidebar'
 
 export default {
   name: 'SidebarItem',
   components: { Item, AppLink },
+  mixins: [sidebarMixin],
   props: {
     // route object
     item: {
