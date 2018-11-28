@@ -28,7 +28,7 @@ export default ({ $axios, redirect, app }) => {
     const err = generateRequestError(error)
     Message.error(err.message)
     if (err.statusCode === 401) {
-      app.store.state.commit('USER_LOGOUT')
+      app.store.commit('USER_LOGOUT')
       redirect('/login')
     }
   })

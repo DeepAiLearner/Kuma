@@ -26,14 +26,18 @@ export default ({ app, store, route, redirect }) => {
           // 不是管理员
           Message.error('你无权访问该页面')
           Cookies.remove('JWT-TOKEN')
-          window.location = '/login'
+          if (!isLoginPage) {
+            window.location = '/login'
+          }
         }
       })
       .catch(err => {
         // 登录失败
         Message.error(err.message)
         Cookies.remove('JWT-TOKEN')
-        window.location = '/login'
+        if (!isLoginPage) {
+          window.location = '/login'
+        }
       })
   } else {
     // 已登录用户不能访问登录页面
