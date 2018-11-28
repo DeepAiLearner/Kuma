@@ -71,8 +71,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: 'admin'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [
@@ -115,9 +115,12 @@ export default {
                   access: this.loginForm.username,
                   secret: this.loginForm.password
                 })
-                .then(res => {
-                  console.log(res)
-                  this.loading = false
+                .then(token => {
+                  this.$cookie.set('JWT-TOKEN', token, {
+                    expires: 1
+                  })
+                  this.$toast.success('登录成功')
+                  window.location = '/'
                 })
                 .catch(() => {
                   this.loading = false
