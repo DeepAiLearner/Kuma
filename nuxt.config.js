@@ -1,9 +1,9 @@
+const webpack = require('webpack')
 const CompressionPlugin = require('compression-webpack-plugin')
 const BrotliPlugin = require('brotli-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 const path = require('path')
 const resolve = dir => path.join(__dirname, '', dir)
-const webpack = require('webpack')
 
 module.exports = {
   mode: 'spa',
@@ -38,14 +38,12 @@ module.exports = {
           title: route.path.replace('/', ''),
           icon: route.path.replace('/', '')
         }
-        console.log(route)
         if (route.children) {
           for (const item of route.children) {
             item.meta = {
               title: item.name,
               icon: item.name
             }
-            console.log(item)
           }
         }
       }
@@ -80,7 +78,7 @@ module.exports = {
     '~/plugins/prototype',
     '~/plugins/vue-awesome',
     '~/plugins/axios',
-    '~/plugins/charts',
+    '~/plugins/chart',
     '~/plugins/utils'
   ],
 
