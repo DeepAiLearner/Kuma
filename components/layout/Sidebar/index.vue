@@ -28,23 +28,22 @@ export default {
     ...mapGetters(['sidebar']),
     routes() {
       const { routes } = this.$router.options
-      const result = []
+      const beginPath = '/dashboard'
+      const endPath = '/manager'
+      let firstIndex
+      let lastIndex
       // 有什么更好的排序方法吗？
-      routes.forEach(item => {
-        if (item.path === '/dashboard') {
-          result.push(item)
+      routes.forEach((item, index) => {
+        if (item.path === beginPath) {
+          firstIndex = index
+        }
+        if (item.path === endPath) {
+          lastIndex = index
         }
       })
-      routes.forEach(item => {
-        if (item.path !== '/dashboard' && item.path !== '/manager') {
-          result.push(item)
-        }
-      })
-      routes.forEach(item => {
-        if (item.path === '/manager') {
-          result.push(item)
-        }
-      })
+      const result = routes.filter(_ => !~[beginPath, endPath].indexOf(_.path))
+      result.unshift(routes[firstIndex])
+      result.push(routes[lastIndex])
       return result
     },
     isCollapse() {
