@@ -1,7 +1,6 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 const BrotliPlugin = require('brotli-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const path = require('path')
 const resolve = dir => path.join(__dirname, '', dir)
 const webpack = require('webpack')
@@ -126,7 +125,6 @@ module.exports = {
     extractCSS: true,
     plugins: (() => {
       const result = [
-        new LodashModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
           _: 'lodash'
         })
@@ -142,8 +140,6 @@ module.exports = {
             })
           ])
     })(),
-    babel: {
-      plugins: ['babel-plugin-lodash']
-    }
+    babel: {}
   }
 }
