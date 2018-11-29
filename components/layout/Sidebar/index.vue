@@ -42,8 +42,8 @@ export default {
         }
       })
       const result = routes.filter(_ => !~[beginPath, endPath].indexOf(_.path))
-      result.unshift(routes[firstIndex])
-      result.push(routes[lastIndex])
+      firstIndex !== undefined && result.unshift(routes[firstIndex])
+      lastIndex !== undefined && result.push(routes[lastIndex])
       return result
     },
     isCollapse() {

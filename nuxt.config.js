@@ -1,7 +1,7 @@
+const webpack = require('webpack')
 const CompressionPlugin = require('compression-webpack-plugin')
 const BrotliPlugin = require('brotli-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const path = require('path')
 const resolve = dir => path.join(__dirname, '', dir)
 
@@ -48,7 +48,7 @@ module.exports = {
         }
       }
       routes.push({
-        name: 'error-404',
+        name: 'error-fallback',
         path: '*',
         component: resolve('pages/error/404.vue')
       })
@@ -77,7 +77,8 @@ module.exports = {
     '~/plugins/element-ui',
     '~/plugins/prototype',
     '~/plugins/vue-awesome',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/utils'
   ],
 
   /*
@@ -120,7 +121,11 @@ module.exports = {
     },
     extractCSS: true,
     plugins: (() => {
-      const result = [new LodashModuleReplacementPlugin()]
+      const result = [
+        new webpack.ProvidePlugin({
+          _: 'lodash'
+        })
+      ]
       return isDev
         ? result.concat([])
         : result.concat([
@@ -132,8 +137,6 @@ module.exports = {
             })
           ])
     })(),
-    babel: {
-      plugins: ['babel-plugin-lodash']
-    }
+    babel: {}
   }
 }
