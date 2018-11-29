@@ -4,6 +4,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const path = require('path')
 const resolve = dir => path.join(__dirname, '', dir)
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'spa',
@@ -38,17 +39,19 @@ module.exports = {
           title: route.path.replace('/', ''),
           icon: route.path.replace('/', '')
         }
+        console.log(route)
         if (route.children) {
           for (const item of route.children) {
             item.meta = {
               title: item.name,
               icon: item.name
             }
+            console.log(item)
           }
         }
       }
       routes.push({
-        name: 'error-404',
+        name: 'error-fallback',
         path: '*',
         component: resolve('pages/error/404.vue')
       })
@@ -77,7 +80,9 @@ module.exports = {
     '~/plugins/element-ui',
     '~/plugins/prototype',
     '~/plugins/vue-awesome',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/charts',
+    '~/plugins/utils'
   ],
 
   /*
@@ -103,7 +108,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['vue-awesome'],
+    vendor: ['vue-awesome', 'lodash'],
     /*
      ** You can extend webpack config here
      */
@@ -120,7 +125,12 @@ module.exports = {
     },
     extractCSS: true,
     plugins: (() => {
-      const result = [new LodashModuleReplacementPlugin()]
+      const result = [
+        new LodashModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+          _: 'lodash'
+        })
+      ]
       return isDev
         ? result.concat([])
         : result.concat([

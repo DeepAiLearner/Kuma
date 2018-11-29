@@ -8,10 +8,21 @@ export const mutations = {
   },
   USER_LOGOUT(state) {
     state.user = {}
+  },
+  UPDATE_USER_INFO(state, { key, value }) {
+    state.user[key] = value
   }
 }
 
-export const actions = {}
+export const actions = {
+  async getUpToken({ commit }) {
+    const data = await this.$axios.$get('image/uptoken')
+    commit('UPDATE_USER_INFO', {
+      key: 'uptoken',
+      value: data
+    })
+  }
+}
 
 export const getters = {
   sidebar: state => state.app.sidebar,
