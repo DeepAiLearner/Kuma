@@ -85,8 +85,7 @@ export default {
           this.pageList = this.pageList.concat(data.list)
           this.pageLoading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.pageLoading = false
         })
     },

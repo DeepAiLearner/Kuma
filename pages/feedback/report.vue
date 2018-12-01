@@ -245,8 +245,7 @@ export default {
           this.pageList = data
           this.pageLoading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.pageLoading = false
         })
     },
@@ -318,19 +317,14 @@ export default {
       if (arr.length > 2) {
         tail = `${arr[0]}-${arr[1]}`
       }
-      this.$axios
-        .$post('admin/report/remove', { tail })
-        .then(() => {
-          this.pageList.splice(
-            (this.pageState.cur - 1) * this.pageState.size + index,
-            1
-          )
-          this.pageState.total--
-          this.$toast.success('操作成功')
-        })
-        .catch(e => {
-          this.$toast.error(e.message)
-        })
+      this.$axios.$post('admin/report/remove', { tail }).then(() => {
+        this.pageList.splice(
+          (this.pageState.cur - 1) * this.pageState.size + index,
+          1
+        )
+        this.pageState.total--
+        this.$toast.success('操作成功')
+      })
     },
     async detail(data) {
       let tail = data
@@ -344,9 +338,6 @@ export default {
         })
         .then(data => {
           this.details = data
-        })
-        .catch(e => {
-          this.$toast.error(e.message)
         })
     }
   }

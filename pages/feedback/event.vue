@@ -102,8 +102,7 @@ export default {
           this.pageList = data
           this.pageLoading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.pageLoading = false
         })
     },
@@ -136,19 +135,14 @@ export default {
       } - ${result.browser.version}`
     },
     async remove(index, id) {
-      this.$axios
-        .$post('admin/user/feedback/read', { id })
-        .then(() => {
-          this.pageList.splice(
-            (this.pageState.cur - 1) * this.pageState.size + index,
-            1
-          )
-          this.pageState.total--
-          this.$toast.success('操作成功')
-        })
-        .catch(e => {
-          this.$toast.error(e.message)
-        })
+      this.$axios.$post('admin/user/feedback/read', { id }).then(() => {
+        this.pageList.splice(
+          (this.pageState.cur - 1) * this.pageState.size + index,
+          1
+        )
+        this.pageState.total--
+        this.$toast.success('操作成功')
+      })
     }
   }
 }

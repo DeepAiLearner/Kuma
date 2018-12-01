@@ -108,8 +108,7 @@ export default {
           this.list = data.list
           this.loading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.loading = false
         })
     },
@@ -132,9 +131,6 @@ export default {
             .$post('admin/cartoon_role/remove_star', { ip: value })
             .then(() => {
               this.$toast.success('操作成功')
-            })
-            .catch(e => {
-              this.$toast.error(e.message)
             })
         })
         .catch(() => {})

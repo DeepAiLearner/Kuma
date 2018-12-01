@@ -118,8 +118,7 @@ export default {
           this.list = data.list
           this.loading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.loading = false
         })
     },
@@ -148,9 +147,6 @@ export default {
               this.$toast.success('操作成功')
               window.location.reload()
             })
-            .catch(e => {
-              this.$toast.error(e.message)
-            })
         })
         .catch(() => {})
     },
@@ -164,9 +160,6 @@ export default {
           this.$toast.success('操作成功')
           this.list.splice(index, 1)
         })
-        .catch(e => {
-          this.$toast.error(e.message)
-        })
     },
     upgradeManager(user) {
       this.$axios
@@ -178,9 +171,6 @@ export default {
           this.$toast.success('操作成功')
           user.is_leader = 1
         })
-        .catch(e => {
-          this.$toast.error(e.message)
-        })
     },
     downgradeManager(user) {
       this.$axios
@@ -191,9 +181,6 @@ export default {
         .then(() => {
           this.$toast.success('操作成功')
           user.is_leader = 0
-        })
-        .catch(e => {
-          this.$toast.error(e.message)
         })
     }
   }

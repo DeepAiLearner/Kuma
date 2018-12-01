@@ -56,8 +56,7 @@ export default {
           this.pageList = data
           this.pageLoading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.pageLoading = false
         })
     }

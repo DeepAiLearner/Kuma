@@ -209,8 +209,7 @@ export default {
           this.source = data
           this.loading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.loading = false
         })
     },

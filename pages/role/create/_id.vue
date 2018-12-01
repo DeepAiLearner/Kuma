@@ -185,8 +185,7 @@ export default {
           })
           this.loading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.loading = false
         })
     },
@@ -219,8 +218,6 @@ export default {
             setTimeout(() => {
               window.open(this.$alias.cartoonRole(jumpId))
             }, 2000)
-          } catch (e) {
-            this.$toast.error(e.message)
           } finally {
             this.submitting = false
           }

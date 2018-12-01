@@ -127,8 +127,7 @@ export default {
           this.list = data.list
           this.loading = false
         })
-        .catch(e => {
-          this.$toast.error(e.message)
+        .catch(() => {
           this.loading = false
         })
     },
@@ -161,9 +160,6 @@ export default {
               this.list[index].url = this.editingItem.url
             }
           })
-        })
-        .catch(e => {
-          this.$toast.error(e.message)
         })
     },
     handleUpUploadSuccess(res) {
