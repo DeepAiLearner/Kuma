@@ -32,6 +32,10 @@ export default {
         feedback: '反馈',
         'feedback-event': '用户反馈',
         'feedback-report': '用户举报',
+        cm: '运营',
+        'cm-loop': '首页轮播',
+        'cm-banner': '主站背景',
+        'cm-friends': '友情链接',
         manager: '管理',
         'manager-control': '权限管理',
         'manager-setting': '权限设置'
@@ -70,6 +74,10 @@ export default {
         feedback: 'feather-alt',
         'feedback-event': 'code-branch',
         'feedback-report': 'broadcast-tower',
+        cm: 'hand-holding-heart',
+        'cm-loop': 'layer-group',
+        'cm-banner': 'images',
+        'cm-friends': 'link',
         manager: 'cog',
         'manager-control': 'scroll',
         'manager-setting': 'dice-d20'
