@@ -112,6 +112,11 @@ export default {
       if (this.isExternalLink(routePath)) {
         return routePath
       }
+      if (routePath.substring(routePath.length - 1) === '?') {
+        const arr = routePath.split('/')
+        arr.pop()
+        return path.resolve(this.basePath, arr.join('/'))
+      }
       return path.resolve(this.basePath, routePath)
     },
     isExternalLink(routePath) {
