@@ -528,7 +528,7 @@ export default {
             if (jumpId) {
               await this.$axios.$post('admin/bangumi/edit', params)
             } else {
-              await this.$axios.$post('admin/bangumi/create', params)
+              jumpId = await this.$axios.$post('admin/bangumi/create', params)
             }
             this.$toast.success('操作成功')
             setTimeout(() => {
