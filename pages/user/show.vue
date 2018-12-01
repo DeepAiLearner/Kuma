@@ -214,7 +214,7 @@
           </el-button>
         </el-popover>
         <el-button
-          v-if="user.coin_count - user.coin_from_sign >= 100"
+          v-if="isKing && user.coin_count - user.coin_from_sign >= 100"
           type="success"
           size="mini"
           @click="getMoney"
@@ -429,6 +429,9 @@ export default {
     }
   },
   computed: {
+    isKing() {
+      return this.$store.state.user.id === 1
+    },
     queryId() {
       return +(this.$route.query.id || 0)
     },
