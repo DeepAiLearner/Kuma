@@ -1,3 +1,18 @@
+@import "theme";
+
+body {
+  *, *:before, *:after
+  {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  *:focus, *:active {
+    outline-width: 0;
+  }
+}
+
 input {
   vertical-align: middle;
 
@@ -9,4 +24,10 @@ input {
 
 img {
   width: 100%;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
 }

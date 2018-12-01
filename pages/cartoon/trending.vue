@@ -2,8 +2,8 @@
 </style>
 
 <template>
-  <div id="cartoon-trending">
-    CartoonTrending
+  <div id="cartoon-list">
+    漫画的观看排行榜，待工
   </div>
 </template>
 
