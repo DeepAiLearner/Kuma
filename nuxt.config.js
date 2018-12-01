@@ -44,6 +44,7 @@ module.exports = {
               title: item.name,
               icon: item.name
             }
+            item.props = /:/.test(item.path)
           }
         }
       }
@@ -74,11 +75,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/element-ui',
+    '~/plugins/global-components',
     '~/plugins/prototype',
-    '~/plugins/vue-awesome',
     '~/plugins/axios',
-    '~/plugins/chart',
     '~/plugins/utils'
   ],
 
@@ -92,7 +91,7 @@ module.exports = {
   ],
 
   styleResources: {
-    sass: ['./assets/css/variables.scss', './assets/css/mixins.scss']
+    sass: ['~/assets/css/variables.scss', '~/assets/css/mixins.scss']
   },
   /*
   ** Axios module configuration

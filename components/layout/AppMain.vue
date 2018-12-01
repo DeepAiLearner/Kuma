@@ -28,11 +28,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 .app-main {
   min-height: calc(100vh - 84px);
   position: relative;
   overflow: hidden;
   padding: 30px;
+
+  .page-header {
+    margin-bottom: 30px;
+  }
 }
 </style>

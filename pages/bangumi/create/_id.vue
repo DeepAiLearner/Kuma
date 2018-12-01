@@ -1,15 +1,13 @@
-<style lang="scss">
-#bangumi-create {
-  header {
-    text-align: right;
-  }
-}
-</style>
-
 <template>
-  <div id="bangumi-create">
-    <template v-if="form">
-      <header v-if="id">
+  <div
+    v-loading="loading"
+    id="bangumi-create"
+  >
+    <template>
+      <header
+        v-if="/\d+/.test(id)"
+        class="page-header"
+      >
         <el-button
           :type="form.deleted_at ? 'success' : 'danger'"
           size="small"
@@ -287,7 +285,6 @@ export default {
     }
   },
   data() {
-    const id = +(this.$route.params.id || 0)
     const validateTags = (rule, value, callback) => {
       if (!value || !value.length) {
         return callback(new Error('至少保留 1 个标签'))
@@ -408,7 +405,7 @@ export default {
       }
     }
     return {
-      loading: !!id,
+      loading: /\d+/.test(this.id),
       tags: [],
       releaseWeekly: [
         {
@@ -444,7 +441,21 @@ export default {
           name: '周日'
         }
       ],
-      form: null,
+      form: {
+        name: '',
+        alias: '',
+        released_at: 0,
+        published_at: '',
+        tags: [],
+        avatar: '',
+        banner: '',
+        season: '',
+        summary: '',
+        others_site_video: false,
+        end: false,
+        has_video: true,
+        has_cartoon: false
+      },
       rules: {
         name: [{ required: true, message: '请输入番剧名称', trigger: 'blur' }],
         alias: [{ validator: validateAlias, trigger: 'blur' }],
@@ -458,35 +469,16 @@ export default {
       }
     }
   },
-  beforeRouteUpdate(to, from, next) {
-    this.getBangumiById()
-    next()
-  },
-  created() {
+  mounted() {
     this.getBangumiById()
     this.getBangumiTags()
   },
   methods: {
     getBangumiById() {
-      if (!this.id) {
-        this.form = {
-          name: '',
-          alias: '',
-          released_at: 0,
-          published_at: '',
-          tags: [],
-          avatar: '',
-          banner: '',
-          season: '',
-          summary: '',
-          others_site_video: false,
-          end: false,
-          has_video: true,
-          has_cartoon: false
-        }
+      this.$refs.form.resetFields()
+      if (!/\d+/.test(this.id)) {
         return
       }
-
       this.$axios
         .$get('admin/bangumi/info', {
           params: { id: this.id }
@@ -518,7 +510,6 @@ export default {
       return this.beforeImageUpload(file)
     },
     handleAvatarSuccess(res) {
-      console.log(res)
       this.$toast.success('上传成功')
       this.form.avatar = res.data.url
     },
