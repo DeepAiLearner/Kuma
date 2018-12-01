@@ -2,7 +2,7 @@
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu
       :show-timeout="200"
-      :default-active="$route.path"
+      :default-active="computedActiveRoute"
       :collapse="isCollapse"
       mode="vertical"
       background-color="#304156"
@@ -48,6 +48,19 @@ export default {
     },
     isCollapse() {
       return !this.sidebar.opened
+    },
+    computedActiveRoute() {
+      if (
+        this.$route.matched.some(
+          _ => _.path.substring(_.path.length - 1) === '?'
+        )
+      ) {
+        const path = this.$route.matched[this.$route.matched.length - 1].path
+        const arr = path.split('/')
+        arr.pop()
+        return arr.join('/')
+      }
+      return this.$route.path
     }
   }
 }
