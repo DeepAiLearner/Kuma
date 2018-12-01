@@ -34,7 +34,7 @@
         label="操作"
       >
         <template slot-scope="scope">
-          <router-link :to="`/admin/user/show?zone=${scope.row.zone}`">
+          <router-link :to="`/user/show?zone=${scope.row.zone}`">
             <el-button
               type="primary"
               size="mini"

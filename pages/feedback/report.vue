@@ -288,7 +288,7 @@ export default {
         prefix = 'pin'
       }
       if (prefix === 'user') {
-        return `/admin/user/show?id=${id}`
+        return `/user/show?id=${id}`
       }
       return `/${prefix}/${id}${tail}`
     },
