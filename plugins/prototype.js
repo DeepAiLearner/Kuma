@@ -6,6 +6,8 @@ import Alias from '~/assets/js/alias'
 
 Vue.use({
   install(Vue) {
+    Vue.prototype.$channel = new Vue()
+
     Vue.prototype.$cookie = Cookies
 
     Vue.prototype.$captcha = captcha

@@ -87,16 +87,13 @@ export default {
       if (title === 'dashboard') {
         return true
       }
-      const list = {
-        manager: '测试'
-      }
+      const list = {}
       if (!list[title]) {
         return true
       }
       const roles = store
         ? store.state.user.roles
         : this.$store.state.user.roles
-      /*
       if (
         roles.some(
           _ => ~['幕后主使者', '继承繁星之人', '被神所眷恋之人'].indexOf(_)
@@ -104,7 +101,6 @@ export default {
       ) {
         return true
       }
-      */
       return roles.some(_ => _ === list[title])
     }
   }
