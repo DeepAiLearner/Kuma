@@ -33,7 +33,7 @@ module.exports = {
    * Global middleware
    */
   router: {
-    middleware: ['auth'],
+    middleware: ['auth', 'permission'],
     extendRoutes(routes) {
       for (const route of routes) {
         route.props = /:/.test(route.path)

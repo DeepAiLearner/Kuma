@@ -82,6 +82,30 @@ export default {
         'manager-control': 'scroll',
         'manager-setting': 'dice-d20'
       }[icon]
+    },
+    mapVisit(title, store = null) {
+      if (title === 'dashboard') {
+        return true
+      }
+      const list = {
+        manager: '测试'
+      }
+      if (!list[title]) {
+        return true
+      }
+      const roles = store
+        ? store.state.user.roles
+        : this.$store.state.user.roles
+      /*
+      if (
+        roles.some(
+          _ => ~['幕后主使者', '继承繁星之人', '被神所眷恋之人'].indexOf(_)
+        )
+      ) {
+        return true
+      }
+      */
+      return roles.some(_ => _ === list[title])
     }
   }
 }

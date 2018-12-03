@@ -1,6 +1,6 @@
 <template>
   <div 
-    v-if="!item.hidden&&item.children" 
+    v-if="!item.hidden && item.children && mapVisit(item.meta.title)"
     class="menu-wrapper">
 
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
@@ -28,7 +28,7 @@
 
       <template 
         v-for="child in item.children" 
-        v-if="!child.hidden">
+        v-if="!child.hidden && mapVisit(child.meta.title)">
         <sidebar-item
           v-if="child.children&&child.children.length>0"
           :is-nest="true"

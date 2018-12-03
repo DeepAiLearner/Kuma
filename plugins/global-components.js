@@ -7,6 +7,7 @@ import BangumiSearch from '~/components/search/BangumiSearch'
 import UserSearch from '~/components/search/UserSearch'
 import Pagination from '~/components/Pagination'
 import Dialog from '~/components/Dialog'
+import hasRoleMixin from '~/mixins/hasRole'
 require('vue-awesome/icons')
 
 Vue.component('v-icon', Icon)
@@ -17,3 +18,4 @@ Vue.component(BangumiSearch.name, BangumiSearch)
 Vue.component(UserSearch.name, UserSearch)
 Vue.component(Pagination.name, Pagination)
 Vue.component(Dialog.name, Dialog)
+Vue.mixin(hasRoleMixin)
