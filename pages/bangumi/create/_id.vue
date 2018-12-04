@@ -518,6 +518,9 @@ export default {
       this.form.banner = res.data.url
     },
     submitForm() {
+      if (this.canNot('创建编辑番剧')) {
+        return
+      }
       this.$refs.form.validate(async valid => {
         if (valid) {
           const params = Object.assign({}, this.form, {
@@ -541,6 +544,9 @@ export default {
       })
     },
     updateRelease() {
+      if (this.canNot('操作视频')) {
+        return
+      }
       this.$prompt('请输入视频id', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -563,6 +569,9 @@ export default {
         .catch(() => {})
     },
     handleDelete() {
+      if (this.canNot('删除番剧')) {
+        return
+      }
       this.$confirm('确认要执行该操作吗?', '提示')
         .then(() => {
           this.$axios

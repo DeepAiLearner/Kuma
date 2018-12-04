@@ -251,6 +251,9 @@ export default {
       this.form.poster = `${this.imagePrefix}${res.data.url}`
     },
     async onSubmit() {
+      if (this.canNot('更改首页轮播')) {
+        return
+      }
       if (!this.form.title) {
         this.$toast.error('标题不能为空！')
         return
@@ -288,6 +291,9 @@ export default {
       }
     },
     async remove(index, row) {
+      if (this.canNot('更改首页轮播')) {
+        return
+      }
       this.$confirm('确定要下架吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -310,6 +316,9 @@ export default {
         .catch(() => {})
     },
     async sort(index, row) {
+      if (this.canNot('更改首页轮播')) {
+        return
+      }
       this.$confirm('确定要置顶吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',

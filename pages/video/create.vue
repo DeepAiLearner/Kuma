@@ -478,6 +478,9 @@ export default {
       }
     },
     async submitForm() {
+      if (this.canNot('操作视频')) {
+        return
+      }
       if (this.saving) {
         return
       }

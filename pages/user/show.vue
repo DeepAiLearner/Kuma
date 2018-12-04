@@ -530,6 +530,9 @@ export default {
         })
     },
     async freezeUser() {
+      if (this.canNot('禁言用户')) {
+        return
+      }
       if (!this.banned_to) {
         this.$toast.error('请先选择禁言时长')
         return
@@ -550,6 +553,9 @@ export default {
         })
     },
     async freeUser() {
+      if (this.canNot('解除用户禁言')) {
+        return
+      }
       this.banning = true
       this.$axios
         .$post('admin/user/banned/free', {
@@ -625,6 +631,9 @@ export default {
         })
     },
     async addUserToTrial() {
+      if (this.canNot('添加用户到审核池')) {
+        return
+      }
       if (this.loading) {
         return
       }
@@ -641,6 +650,9 @@ export default {
         })
     },
     async recover() {
+      if (this.canNot('解禁用户')) {
+        return
+      }
       if (this.loading) {
         return
       }
@@ -657,6 +669,9 @@ export default {
         })
     },
     async block() {
+      if (this.canNot('封禁用户')) {
+        return
+      }
       if (this.loading) {
         return
       }
@@ -673,6 +688,9 @@ export default {
         })
     },
     getMoney() {
+      if (this.canNot('为用户提现')) {
+        return
+      }
       this.$prompt('输入要提现的金额', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'

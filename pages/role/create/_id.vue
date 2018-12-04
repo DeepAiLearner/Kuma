@@ -194,6 +194,9 @@ export default {
       this.form.avatar = res.data.url
     },
     submitForm() {
+      if (this.canNot('编辑创建偶像')) {
+        return
+      }
       this.$refs.form.validate(async valid => {
         if (valid) {
           if (this.submitting) {

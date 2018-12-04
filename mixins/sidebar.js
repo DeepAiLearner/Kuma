@@ -10,7 +10,7 @@ export default {
         'bangumi-list': '番剧列表',
         'bangumi-manager': '设置版主',
         'bangumi-managers': '版主列表',
-        'bangumi-create-id': '管理番剧',
+        'bangumi-create-id': '创建番剧',
         video: '视频',
         'video-list': '视频列表',
         'video-trending': '播放排行',
@@ -29,9 +29,7 @@ export default {
         'user-dalao': '大佬列表',
         'user-faker': '运营账号',
         'user-show': '用户查询',
-        feedback: '反馈',
-        'feedback-event': '用户反馈',
-        'feedback-report': '用户举报',
+        'user-feedback': '用户反馈',
         cm: '运营',
         'cm-loop': '首页轮播',
         'cm-banner': '主站背景',
@@ -71,9 +69,7 @@ export default {
         'user-dalao': 'crown',
         'user-faker': 'hat-wizard',
         'user-show': 'search-location',
-        feedback: 'feather-alt',
-        'feedback-event': 'code-branch',
-        'feedback-report': 'broadcast-tower',
+        'user-feedback': 'code-branch',
         cm: 'hand-holding-heart',
         'cm-loop': 'layer-group',
         'cm-banner': 'images',
@@ -87,7 +83,10 @@ export default {
       if (title === 'dashboard') {
         return true
       }
-      const list = {}
+      const list = {
+        'bangumi-manager': '访问设置版主',
+        'user-faker': '访问运营账号'
+      }
       const must = {
         manager: '幕后主使者',
         'manager-control': '幕后主使者',

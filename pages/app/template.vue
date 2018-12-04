@@ -110,6 +110,9 @@ export default {
         })
     },
     async submit() {
+      if (this.canNot('发布页面模板')) {
+        return
+      }
       if (this.loading) {
         return
       }

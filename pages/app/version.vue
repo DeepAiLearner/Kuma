@@ -225,6 +225,9 @@ export default {
         })
     },
     async createAppVersion() {
+      if (this.canNot('控制APP版本')) {
+        return
+      }
       if (!this.appType || !this.appVersion || !this.downloadUrl) {
         return
       }
@@ -244,6 +247,9 @@ export default {
         })
     },
     async remove(index, row) {
+      if (this.canNot('控制APP版本')) {
+        return
+      }
       this.$confirm('确定要删除吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -267,6 +273,9 @@ export default {
         .catch(() => {})
     },
     async toggleForce(row) {
+      if (this.canNot('控制APP版本')) {
+        return
+      }
       this.$confirm('确定要执行该操作吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',

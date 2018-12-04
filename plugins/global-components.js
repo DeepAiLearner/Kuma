@@ -10,8 +10,9 @@ import Dialog from '~/components/Dialog'
 import hasRoleMixin from '~/mixins/hasRole'
 require('vue-awesome/icons')
 
-Vue.component('v-icon', Icon)
+Vue.use(require('vue-moment'))
 Vue.use(Element)
+Vue.component('v-icon', Icon)
 Vue.component(VeLine.name, VeLine)
 Vue.component(VeHistogram.name, VeHistogram)
 Vue.component(BangumiSearch.name, BangumiSearch)

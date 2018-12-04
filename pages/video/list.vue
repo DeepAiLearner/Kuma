@@ -207,6 +207,9 @@ export default {
       this.showEditorModal = true
     },
     handleDelete(video) {
+      if (this.canNot('操作视频')) {
+        return
+      }
       this.$confirm('确认要执行该操作吗?', '提示')
         .then(() => {
           this.$axios.$post('admin/video/delete', { id: video.id }).then(() => {
@@ -217,6 +220,9 @@ export default {
         .catch(() => {})
     },
     async handleEditDone() {
+      if (this.canNot('操作视频')) {
+        return
+      }
       if (this.editSubmitting) {
         return
       }

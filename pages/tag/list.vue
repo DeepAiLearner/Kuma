@@ -143,6 +143,9 @@ export default {
         })
     },
     editTagName(tag) {
+      if (this.canNot('创建编辑标签')) {
+        return
+      }
       this.$prompt('请输入新名称', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
@@ -162,6 +165,9 @@ export default {
         .catch(() => {})
     },
     handleCreateDone() {
+      if (this.canNot('创建编辑标签')) {
+        return
+      }
       const name = this.createForm.name
       if (!this.createForm.name) {
         this.$toast.error('名字不能为空')

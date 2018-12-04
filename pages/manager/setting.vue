@@ -226,13 +226,11 @@ export default {
               role_name: role.name,
               user_id: value
             })
-            .then(id => {
+            .then(user => {
               this.$toast.success('操作成功')
               this.users.push({
-                id,
-                name: role.name,
-                role_id: role.id,
-                user_id: value
+                ...user,
+                role_id: role.id
               })
             })
         })

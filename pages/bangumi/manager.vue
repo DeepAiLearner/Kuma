@@ -123,6 +123,9 @@ export default {
         })
     },
     addManager() {
+      if (this.canNot('设置版主')) {
+        return
+      }
       if (!this.bangumiId) {
         this.$toast.error('请先选择番剧')
         return
@@ -151,6 +154,9 @@ export default {
         .catch(() => {})
     },
     removeManager(userId, index) {
+      if (this.canNot('设置版主')) {
+        return
+      }
       this.$axios
         .$post('admin/bangumi/manager/remove', {
           bangumi_id: this.bangumiId,
@@ -162,6 +168,9 @@ export default {
         })
     },
     upgradeManager(user) {
+      if (this.canNot('设置版主')) {
+        return
+      }
       this.$axios
         .$post('admin/bangumi/manager/upgrade', {
           bangumi_id: this.bangumiId,
@@ -173,6 +182,9 @@ export default {
         })
     },
     downgradeManager(user) {
+      if (this.canNot('设置版主')) {
+        return
+      }
       this.$axios
         .$post('admin/bangumi/manager/downgrade', {
           bangumi_id: this.bangumiId,

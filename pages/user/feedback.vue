@@ -55,7 +55,7 @@ import pageMixin from '~/mixins/page'
 import UAParser from 'ua-parser-js'
 
 export default {
-  name: 'FeedbackEvent',
+  name: 'UserFeedback',
   mixins: [pageMixin],
   data() {
     return {
@@ -135,6 +135,9 @@ export default {
       } - ${result.browser.version}`
     },
     async remove(index, id) {
+      if (this.canNot('操作用户反馈')) {
+        return
+      }
       this.$axios.$post('admin/user/feedback/read', { id }).then(() => {
         this.pageList.splice(
           (this.pageState.cur - 1) * this.pageState.size + index,

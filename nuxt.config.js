@@ -110,7 +110,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['vue-awesome', 'lodash'],
+    vendor: ['vue-awesome', 'lodash', 'vue-moment'],
     /*
      ** You can extend webpack config here
      */
@@ -130,7 +130,11 @@ module.exports = {
       const result = [
         new webpack.ProvidePlugin({
           _: 'lodash'
-        })
+        }),
+        new webpack.ContextReplacementPlugin(
+          /moment[\\\/]locale$/,
+          /^\.\/(zh-cn)$/
+        )
       ]
       return isDev
         ? result.concat([])

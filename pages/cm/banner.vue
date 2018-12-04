@@ -235,6 +235,9 @@ export default {
       this.form.gray = getImageGray(this.$refs.another, 100)
     },
     handleSwitch(item) {
+      if (this.canNot('修改主站背景')) {
+        return
+      }
       this.$axios
         .$post('admin/banner/toggle_use', { id: item.id })
         .then(data => {
@@ -263,6 +266,9 @@ export default {
       this.uploadConfig.pathPrefix = 'banner'
     },
     async handleBannerEditSubmit() {
+      if (this.canNot('修改主站背景')) {
+        return
+      }
       if (this.modalLoading) {
         return
       }
@@ -284,6 +290,9 @@ export default {
         })
     },
     async handleBannerCreateSubmit() {
+      if (this.canNot('修改主站背景')) {
+        return
+      }
       if (!this.form.url) {
         this.$toast.error('请先上传图片')
         return

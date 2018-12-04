@@ -141,6 +141,9 @@ export default {
       this.toggleEditModal = true
     },
     async submitCartoonEdit() {
+      if (this.canNot('编辑漫画')) {
+        return
+      }
       if (this.loadingCreate) {
         return
       }

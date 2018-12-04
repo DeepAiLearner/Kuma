@@ -96,6 +96,9 @@ export default {
         })
     },
     async createFriendLink() {
+      if (this.canNot('修改友情链接')) {
+        return
+      }
       this.$axios
         .$post('admin/web/friend_link/append', {
           link: this.link.split('?')[0],

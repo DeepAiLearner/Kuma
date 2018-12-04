@@ -119,6 +119,9 @@ export default {
       }
     },
     removeStar() {
+      if (this.canNot('撤销用户应援')) {
+        return
+      }
       this.$prompt('请输入违规用户的 ip 地址', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'

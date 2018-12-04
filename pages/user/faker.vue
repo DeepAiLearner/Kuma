@@ -3,7 +3,7 @@
     v-loading="pageLoading"
     id="user-faker"
   >
-    <header>
+    <header class="page-header">
       <el-button
         type="primary"
         @click="createNewFakerUser"
@@ -76,6 +76,9 @@ export default {
         })
     },
     newLife(index, user) {
+      if (this.canNot('操作运营号')) {
+        return
+      }
       this.$prompt('请输入转让者的手机号', '提示', {
         confirmButtonText: '提交',
         cancelButtonText: '取消',
@@ -100,6 +103,9 @@ export default {
         .catch(() => {})
     },
     createNewFakerUser() {
+      if (this.canNot('操作运营号')) {
+        return
+      }
       this.$prompt('请输入要创建的用户昵称', '提示', {
         confirmButtonText: '提交',
         cancelButtonText: '取消'
