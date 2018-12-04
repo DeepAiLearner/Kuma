@@ -51,16 +51,16 @@
 
 <template>
   <div id="todo-nav">
-    <a
+    <nuxt-link
       v-for="(item, index) in todo"
       v-if="item.value > 0"
       :key="index"
-      :href="mapTodo(item.name, 'link')"
+      :to="mapTodo(item.name, 'link')"
       :class="`level-${mapTodo(item.name, 'level')}`"
       class="todo-item"
     >
       {{ mapTodo(item.name, 'label') + '  ' + item.value }}
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
