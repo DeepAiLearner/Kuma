@@ -3,11 +3,14 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const BrotliPlugin = require('brotli-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 const path = require('path')
+const qiniu = require('./deploy/qiniu')
 const resolve = dir => path.join(__dirname, '', dir)
 
 module.exports = {
   mode: 'spa',
-
+  env: {
+    API_URL: isDev ? 'http://localhost:3099/' : 'https://api.calibur.tv/'
+  },
   /*
   ** Headers of the page
   */
@@ -140,6 +143,7 @@ module.exports = {
             })
           ])
     })(),
+    publicPath: isDev ? '/_nuxt/' : `${qiniu.host}${qiniu.key_prefix}`,
     babel: {}
   }
 }
