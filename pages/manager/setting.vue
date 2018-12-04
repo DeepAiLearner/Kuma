@@ -282,11 +282,11 @@ export default {
               }
             })
           }
-          this.submitting = true
+          this.submitting = false
           this.showDialog = false
         })
         .catch(() => {
-          this.submitting = true
+          this.submitting = false
         })
     }
   }

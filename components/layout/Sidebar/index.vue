@@ -1,3 +1,9 @@
+<style lang="scss">
+.scrollbar-wrapper {
+  background-color: #304156;
+}
+</style>
+
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu

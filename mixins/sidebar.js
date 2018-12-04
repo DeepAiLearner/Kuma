@@ -88,12 +88,20 @@ export default {
         return true
       }
       const list = {}
-      if (!list[title]) {
+      const must = {
+        manager: '幕后主使者',
+        'manager-control': '幕后主使者',
+        'manager-setting': '幕后主使者'
+      }
+      if (!list[title] && !must[title]) {
         return true
       }
       const roles = store
         ? store.state.user.roles
         : this.$store.state.user.roles
+      if (must[title]) {
+        return roles.some(_ => _ === must[title])
+      }
       if (
         roles.some(
           _ => ~['幕后主使者', '继承繁星之人', '被神所眷恋之人'].indexOf(_)

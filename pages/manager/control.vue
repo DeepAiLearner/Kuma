@@ -21,6 +21,10 @@
       fit
       highlight-current-row
     >
+      <el-table-column
+        label="id"
+        prop="id"
+      />
       <el-table-column label="昵称">
         <a
           slot-scope="scope"
