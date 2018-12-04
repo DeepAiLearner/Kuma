@@ -95,20 +95,19 @@ import uploadMixin from '~/mixins/upload'
 
 export default {
   mixins: [uploadMixin],
-  props: {
-    id: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     return {
-      loading: /\d+/.test(this.id),
+      loading: false,
       toggleEditModal: false,
       editingItem: null,
       loadingSubmit: false,
       loadingCreate: false,
       list: []
+    }
+  },
+  computed: {
+    id() {
+      return this.$route.query.id
     }
   },
   mounted() {
@@ -119,6 +118,7 @@ export default {
       if (!/\d+/.test(this.id)) {
         return
       }
+      this.loading = true
       this.$axios
         .$get(`bangumi/${this.id}/cartoon`, {
           params: { take: 9999 }

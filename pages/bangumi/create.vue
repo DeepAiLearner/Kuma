@@ -278,12 +278,6 @@ import uploadMixin from '~/mixins/upload'
 
 export default {
   mixins: [uploadMixin],
-  props: {
-    id: {
-      type: [String],
-      default: ''
-    }
-  },
   data() {
     const validateTags = (rule, value, callback) => {
       if (!value || !value.length) {
@@ -405,7 +399,7 @@ export default {
       }
     }
     return {
-      loading: /\d+/.test(this.id),
+      loading: false,
       tags: [],
       releaseWeekly: [
         {
@@ -469,6 +463,11 @@ export default {
       }
     }
   },
+  computed: {
+    id() {
+      return this.$route.query.id
+    }
+  },
   mounted() {
     this.getBangumiById()
     this.getBangumiTags()
@@ -479,6 +478,7 @@ export default {
       if (!/\d+/.test(this.id)) {
         return
       }
+      this.loading = true
       this.$axios
         .$get('admin/bangumi/info', {
           params: { id: this.id }

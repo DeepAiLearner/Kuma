@@ -51,36 +51,39 @@
 
 <template>
   <div id="todo-nav">
-    <span class="todo-item level-0">
-      测试
-    </span>
-    <span class="todo-item level-1">
-      测试
-    </span>
-    <span class="todo-item level-2">
-      测试
-    </span>
-    <span class="todo-item level-3">
-      测试
-    </span>
-    <span class="todo-item level-4">
-      测试
-    </span>
+    <a
+      v-for="(item, index) in todo"
+      v-if="item.value > 0"
+      :key="index"
+      :href="mapTodo(item.name, 'link')"
+      :class="`level-${mapTodo(item.name, 'level')}`"
+      class="todo-item"
+    >
+      {{ mapTodo(item.name, 'label') + '  ' + item.value }}
+    </a>
   </div>
 </template>
 
 <script>
 export default {
   name: 'TodoNav',
-  components: {},
-  props: {},
-  data() {
-    return {}
+  computed: {
+    todo() {
+      return this.$store.state.todo
+    }
   },
-  computed: {},
-  watch: {},
-  created() {},
-  mounted() {},
-  methods: {}
+  methods: {
+    mapTodo(name, key) {
+      const list = [
+        {
+          name: 'feedback',
+          label: '用户反馈',
+          level: 0,
+          link: '/user/feedback/'
+        }
+      ]
+      return list.filter(_ => _.name === name)[0][key]
+    }
+  }
 }
 </script>

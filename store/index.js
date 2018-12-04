@@ -1,5 +1,6 @@
 export const state = () => ({
-  user: {}
+  user: {},
+  todo: []
 })
 
 export const mutations = {
@@ -11,6 +12,23 @@ export const mutations = {
   },
   UPDATE_USER_INFO(state, { key, value }) {
     state.user[key] = value
+  },
+  SET_TODO(state, data) {
+    const result = []
+    Object.keys(data).forEach(key => {
+      result.push({
+        name: key,
+        value: data[key]
+      })
+    })
+    state.todo = result
+  },
+  CHANGE_TODO(state, { key, value = 1 }) {
+    state.todo.forEach(item => {
+      if (item.name === key) {
+        item.value -= value
+      }
+    })
   }
 }
 
@@ -21,6 +39,10 @@ export const actions = {
       key: 'uptoken',
       value: data
     })
+  },
+  async getTodo({ commit }) {
+    const data = await this.$axios.$get('admin/console_todo')
+    commit('SET_TODO', data)
   }
 }
 

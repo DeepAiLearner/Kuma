@@ -128,7 +128,7 @@
               size="mini"
             >
               <a
-                :href="`/user/show?id=${scope.row.id}`"
+                :href="`/user/show/?id=${scope.row.id}`"
                 target="_blank"
               >
                 查看数据

@@ -36,7 +36,7 @@ module.exports = {
    * Global middleware
    */
   router: {
-    middleware: ['auth'],
+    middleware: ['auth', 'route-change'],
     extendRoutes(routes) {
       for (const route of routes) {
         route.props = /:/.test(route.path)

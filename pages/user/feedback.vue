@@ -32,7 +32,7 @@
           >确认</el-button>
           <router-link
             v-if="scope.row.user_id != 0"
-            :to="`/user/show?id=${scope.row.user_id}`"
+            :to="`/user/show/?id=${scope.row.user_id}`"
           >
             <el-button
               size="small"
@@ -145,6 +145,9 @@ export default {
         )
         this.pageState.total--
         this.$toast.success('操作成功')
+        this.$store.commit('CHANGE_TODO', {
+          key: 'feedback'
+        })
       })
     }
   }

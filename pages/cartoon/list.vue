@@ -19,7 +19,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <router-link :to="`/cartoon/edit/${scope.row.id}`">
+          <router-link :to="`/cartoon/edit/?id=${scope.row.id}`">
             <el-button
               size="small"
               type="primary"

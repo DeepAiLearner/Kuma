@@ -127,12 +127,6 @@ import uploadMixin from '~/mixins/upload'
 export default {
   name: 'RoleCreate',
   mixins: [uploadMixin],
-  props: {
-    id: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     const validateAlias = (rule, value, callback) => {
       if (value === '') {
@@ -144,7 +138,7 @@ export default {
       }
     }
     return {
-      loading: /\d+/.test(this.id),
+      loading: false,
       form: {
         name: '',
         alias: '',
@@ -165,6 +159,11 @@ export default {
       submitting: false
     }
   },
+  computed: {
+    id() {
+      return this.$route.query.id
+    }
+  },
   mounted() {
     this.getRoleById()
   },
@@ -174,7 +173,7 @@ export default {
       if (!/\d+/.test(this.id)) {
         return
       }
-
+      this.loading = true
       this.$axios
         .$get('admin/cartoon_role/show', {
           params: { id: this.id }

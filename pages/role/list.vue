@@ -64,7 +64,7 @@
       />
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <router-link :to="`/role/create/${scope.row.id}`">
+          <router-link :to="`/role/create/?id=${scope.row.id}`">
             <el-button
               size="small"
               type="primary"

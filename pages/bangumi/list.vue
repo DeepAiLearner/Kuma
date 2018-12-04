@@ -26,7 +26,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <router-link :to="`/bangumi/create/${scope.row.id}`">
+          <router-link :to="`/bangumi/create/?id=${scope.row.id}`">
             <el-button
               size="small"
               type="primary"

@@ -291,7 +291,7 @@
         <el-table-column label="相关用户 id">
           <a
             slot-scope="scope"
-            :href="`/user/show?id=${scope.row.about_user_id}`"
+            :href="`/user/show/?id=${scope.row.about_user_id}`"
             target="_blank"
             v-text="scope.row.about_user_id"
           />

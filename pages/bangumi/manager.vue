@@ -52,7 +52,7 @@
         width="350px"
       >
         <template slot-scope="scope">
-          <router-link :to="`/user/show?zone=${scope.row.user.zone}`">
+          <router-link :to="`/user/show/?zone=${scope.row.user.zone}`">
             <el-button
               size="mini"
               type="primary"
