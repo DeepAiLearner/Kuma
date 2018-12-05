@@ -91,7 +91,7 @@ export default {
     },
     handleBangumiSearch(id) {
       this.$router.push({
-        path: `/bangumi/create/${id}`
+        path: `/bangumi/create/?id=${id}`
       })
     }
   }
