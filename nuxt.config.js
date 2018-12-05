@@ -15,7 +15,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'calibur - 控制台',
+    title: 'calibur - 管理后台',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }

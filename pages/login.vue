@@ -7,7 +7,7 @@
       class="login-form" 
       auto-complete="on" 
       label-position="left">
-      <h3 class="title">calibur.tv 控制台</h3>
+      <h3 class="title">calibur.tv 管理后台</h3>
       <el-form-item prop="username">
         <span class="svg-container">
           <v-icon name="user"/>
