@@ -2,12 +2,12 @@ import { Message } from 'element-ui'
 
 const generateRequestError = err => {
   if (/timeout of/.test(err.message)) {
-    err.statusCode = 0
+    err.statusCode = 504
     err.message = '网路请求超时，请稍候再试！'
     return err
   }
   if (!err.response) {
-    err.statusCode = 1
+    err.statusCode = 502
     err.message = '网络错误，请刷新网页重试！'
     return err
   }
