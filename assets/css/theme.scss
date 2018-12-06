@@ -1,4 +1,8 @@
 #calibur-tv {
+  .el-popper {
+    padding: 0;
+  }
+
   .el-message {
     min-width: 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
