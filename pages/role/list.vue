@@ -130,11 +130,7 @@ export default {
           if (!value) {
             return
           }
-          this.$axios
-            .$post('admin/cartoon_role/remove_star', { ip: value })
-            .then(() => {
-              this.$toast.success('操作成功')
-            })
+          this.$axios.$post('admin/cartoon_role/remove_star', { ip: value })
         })
         .catch(() => {})
     }

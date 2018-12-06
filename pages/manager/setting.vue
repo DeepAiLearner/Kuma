@@ -201,7 +201,6 @@ export default {
     },
     deleteRole(index, id) {
       this.$axios.$post('admin/role/destroy_role', { id }).then(() => {
-        this.$toast.success('操作成功')
         this.roles.splice(index, 1)
       })
     },
@@ -227,7 +226,6 @@ export default {
               user_id: value
             })
             .then(user => {
-              this.$toast.success('操作成功')
               this.users.push({
                 ...user,
                 role_id: role.id
@@ -246,7 +244,6 @@ export default {
           user_id: user.id
         })
         .then(() => {
-          this.$toast.success('操作成功')
           this.users.forEach((item, index) => {
             if (item.id === user.id && item.role_id === user.role_id) {
               this.users.splice(index, 1)
@@ -266,7 +263,6 @@ export default {
           this.form
         )
         .then(id => {
-          this.$toast.success('操作成功')
           if (isCreate) {
             this.roles.push({
               id,

@@ -110,7 +110,6 @@ export default {
             name: this.name
           })
           this.pageState.total++
-          this.$toast.success('操作成功')
           this.showCreateModal = false
           this.name = ''
           this.link = ''
@@ -133,7 +132,6 @@ export default {
                 1
               )
               this.pageState.total--
-              this.$toast.success('操作成功')
             })
         })
         .catch(() => {})

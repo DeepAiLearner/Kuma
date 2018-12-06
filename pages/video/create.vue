@@ -520,7 +520,6 @@ export default {
       this.$axios
         .$post('admin/video/save', arr)
         .then(() => {
-          this.$toast.success('操作成功')
           this.$refs.form.resetFields()
           this.resetForm()
           this.saving = false

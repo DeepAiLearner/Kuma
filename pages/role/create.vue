@@ -215,7 +215,6 @@ export default {
             if (!this.id) {
               this.$refs.form.resetFields()
             }
-            this.$toast.success('操作成功')
             this.uploadConfig.pathPrefix = `bangumi/role/`
             setTimeout(() => {
               window.open(this.$alias.cartoonRole(jumpId))

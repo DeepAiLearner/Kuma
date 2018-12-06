@@ -27,7 +27,15 @@ export default ({ $axios, redirect, app }) => {
     return config
   })
 
-  $axios.onResponse(resp => resp.data)
+  $axios.onResponse(resp => {
+    if (
+      resp.config.method === 'post' &&
+      !/\/door\/refresh/.test(resp.config.url)
+    ) {
+      Message.success('操作成功')
+    }
+    return resp.data
+  })
 
   $axios.onError(error => {
     const err = generateRequestError(error)

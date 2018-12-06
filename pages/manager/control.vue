@@ -122,7 +122,6 @@ export default {
         return
       }
       this.$axios.$post('admin/console/remove', { id }).then(() => {
-        this.$toast.success('操作成功')
         this.list.splice(index, 1)
       })
     },
@@ -139,7 +138,6 @@ export default {
             return
           }
           this.$axios.$post('admin/console/add', { id: value }).then(() => {
-            this.$toast.success('操作成功')
             window.location.reload()
           })
         })
@@ -166,7 +164,6 @@ export default {
           user_id: this.focusUser.id
         })
         .then(() => {
-          this.$toast.success('操作成功')
           this.roles.forEach((item, index) => {
             if (item === roleName) {
               this.roles.splice(index, 1)

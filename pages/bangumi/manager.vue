@@ -147,7 +147,6 @@ export default {
               user_id: value
             })
             .then(() => {
-              this.$toast.success('操作成功')
               window.location.reload()
             })
         })
@@ -163,7 +162,6 @@ export default {
           user_id: userId
         })
         .then(() => {
-          this.$toast.success('操作成功')
           this.list.splice(index, 1)
         })
     },
@@ -177,7 +175,6 @@ export default {
           user_id: user.id
         })
         .then(() => {
-          this.$toast.success('操作成功')
           user.is_leader = 1
         })
     },
@@ -191,7 +188,6 @@ export default {
           user_id: user.id
         })
         .then(() => {
-          this.$toast.success('操作成功')
           user.is_leader = 0
         })
     }

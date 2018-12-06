@@ -28,11 +28,11 @@ export default ({ app, store, route, redirect }) => {
             window.location = indexPath
           }
           // 是管理员
+          store.commit('SET_USER', data)
           const hasRole = permission(route, store)
           if (!hasRole) {
             redirect(notRolePath)
           }
-          store.commit('SET_USER', data)
           store.dispatch('getTodo')
         } else {
           // 不是管理员

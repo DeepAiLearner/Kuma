@@ -156,7 +156,6 @@ export default {
         })
         .then(() => {
           this.toggleEditModal = false
-          this.$toast.success('更新成功')
           this.list.forEach((item, index) => {
             if (item.id === this.editingItem.id) {
               this.list[index].name = this.editingItem.name

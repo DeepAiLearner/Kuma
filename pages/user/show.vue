@@ -545,7 +545,6 @@ export default {
         })
         .then(() => {
           this.user.banned_to = this.banned_to.toString()
-          this.$toast.success('操作成功')
           this.banning = false
         })
         .catch(() => {
@@ -563,7 +562,6 @@ export default {
         })
         .then(() => {
           this.user.banned_to = null
-          this.$toast.success('操作成功')
           this.banning = false
         })
         .catch(() => {
@@ -641,7 +639,6 @@ export default {
       this.$axios
         .$post('admin/user/add_to_trial', { id: this.user.id })
         .then(() => {
-          this.$toast.success('操作成功')
           this.user.state = 1
           this.loading = false
         })
@@ -660,7 +657,6 @@ export default {
       this.$axios
         .$post('admin/trial/user/recover', { id: this.user.id })
         .then(() => {
-          this.$toast.success('操作成功')
           this.user.deleted_at = null
           this.loading = false
         })
@@ -679,7 +675,6 @@ export default {
       this.$axios
         .$post('admin/trial/user/ban', { id: this.user.id })
         .then(() => {
-          this.$toast.success('操作成功')
           this.user.deleted_at = Date.now()
           this.loading = false
         })
@@ -709,14 +704,10 @@ export default {
             this.$toast.error('必须大于0')
             return
           }
-          this.$axios
-            .$post('admin/user/withdrawal', {
-              id: this.user.id,
-              money: data
-            })
-            .then(() => {
-              this.$toast.success('操作成功')
-            })
+          this.$axios.$post('admin/user/withdrawal', {
+            id: this.user.id,
+            money: data
+          })
         })
         .catch(() => {})
     }

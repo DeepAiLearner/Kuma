@@ -97,7 +97,6 @@ export default {
                 1
               )
               this.pageState.total--
-              this.$toast.success('操作成功')
             })
         })
         .catch(() => {})
@@ -136,7 +135,6 @@ export default {
             .then(data => {
               this.pageList.unshift(data)
               this.pageState.total++
-              this.$toast.success('操作成功')
             })
         })
         .catch(() => {})

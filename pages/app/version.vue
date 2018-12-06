@@ -238,7 +238,6 @@ export default {
           url: this.downloadUrl
         })
         .then(data => {
-          this.$toast.success('操作成功')
           this.pageList.unshift(data)
           this.pageState.total++
           this.showCreateModal = false
@@ -267,7 +266,6 @@ export default {
                 1
               )
               this.pageState.total--
-              this.$toast.success('操作成功')
             })
         })
         .catch(() => {})
@@ -290,7 +288,6 @@ export default {
             })
             .then(() => {
               row.force_update = !row.force_update
-              this.$toast.success('操作成功')
             })
         })
         .catch(() => {})

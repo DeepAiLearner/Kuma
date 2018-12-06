@@ -158,7 +158,6 @@ export default {
               type: this.selectedType
             })
             .then(() => {
-              this.$toast.success('更新成功')
               tag.name = value
             })
         })
@@ -193,7 +192,6 @@ export default {
             name,
             id
           })
-          this.$toast.success('操作成功')
           this.pageState.total++
           this.createLoading = false
           this.showCreateModal = false

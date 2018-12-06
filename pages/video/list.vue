@@ -214,7 +214,6 @@ export default {
         .then(() => {
           this.$axios.$post('admin/video/delete', { id: video.id }).then(() => {
             video.deleted_at = !video.deleted_at
-            this.$toast.success('操作成功')
           })
         })
         .catch(() => {})
@@ -235,7 +234,6 @@ export default {
           })
         )
         .then(() => {
-          this.$toast.success('操作成功，页面刷新后可看到改动')
           this.showEditorModal = false
           this.editSubmitting = false
         })

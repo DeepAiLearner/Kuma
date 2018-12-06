@@ -278,15 +278,11 @@ export default {
       )
       if (this.form.id) {
         this.$axios.$post('admin/cm/loop/update', this.form).then(() => {
-          this.$toast.success('操作成功').then(() => {
-            window.location.reload()
-          })
+          window.location.reload()
         })
       } else {
         this.$axios.$post('admin/cm/loop/add', this.form).then(() => {
-          this.$toast.success('操作成功').then(() => {
-            window.location.reload()
-          })
+          window.location.reload()
         })
       }
     },
@@ -310,7 +306,6 @@ export default {
                 1
               )
               this.pageState.total--
-              this.$toast.success('操作成功')
             })
         })
         .catch(() => {})
@@ -330,9 +325,7 @@ export default {
               id: row.id
             })
             .then(() => {
-              this.$toast.success('操作成功').then(() => {
-                window.location.reload()
-              })
+              window.location.reload()
             })
         })
         .catch(() => {})

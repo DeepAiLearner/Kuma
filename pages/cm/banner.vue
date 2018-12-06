@@ -242,7 +242,6 @@ export default {
         .$post('admin/banner/toggle_use', { id: item.id })
         .then(data => {
           item.use = data
-          this.$toast.success('操作成功')
         })
     },
     openEditModal(item) {
@@ -280,7 +279,6 @@ export default {
           user_id: this.form.user_id
         })
         .then(() => {
-          this.$toast.success('操作成功')
           this.showEditModal = false
           this.form = {}
           this.modalLoading = false
@@ -312,7 +310,6 @@ export default {
           gray: this.form.gray
         })
         .then(() => {
-          this.$toast.success('操作成功')
           this.showCreateModal = false
           this.modalLoading = false
           window.location.reload()

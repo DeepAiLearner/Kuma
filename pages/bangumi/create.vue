@@ -491,8 +491,7 @@ export default {
           })
           this.loading = false
         })
-        .catch(err => {
-          this.$toast.error(err)
+        .catch(() => {
           this.loading = false
         })
     },
@@ -533,7 +532,6 @@ export default {
             } else {
               jumpId = await this.$axios.$post('admin/bangumi/create', params)
             }
-            this.$toast.success('操作成功')
             setTimeout(() => {
               window.open(this.$alias.bangumi(jumpId))
             }, 2000)
@@ -554,17 +552,10 @@ export default {
         inputErrorMessage: 'id 格式不正确'
       })
         .then(({ value }) => {
-          this.$axios
-            .$post('admin/bangumi/release', {
-              bangumi_id: this.id,
-              video_id: value
-            })
-            .then(() => {
-              this.$toast.success('更新成功')
-            })
-            .catch(e => {
-              this.$toast.error(e)
-            })
+          this.$axios.$post('admin/bangumi/release', {
+            bangumi_id: this.id,
+            video_id: value
+          })
         })
         .catch(() => {})
     },
@@ -579,7 +570,6 @@ export default {
               id: this.form.id
             })
             .then(() => {
-              this.$toast.success('操作成功')
               this.form.deleted_at = !this.form.deleted_at
             })
             .catch(() => {

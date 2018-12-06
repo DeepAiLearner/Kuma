@@ -128,9 +128,7 @@ export default {
         })
         this.loading = true
         this.$axios.$post('admin/app/setTemplates', { list }).then(() => {
-          this.$toast.success('更新成功！').then(() => {
-            window.location.reload()
-          })
+          window.location.reload()
         })
       } catch (e) {
         this.$toast.error(typeof e === 'string' ? e : '数据格式错误，不是JSON')
